@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".activities.MainActivity">
+
+
+    <!--    <com.ecoss.hud.test.utilities.ObjectRect-->
+    <!--        android:id="@+id/objectRect"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:background="@android:color/transparent" />-->
+
+    <ImageView
+        android:id="@+id/objectMarker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/object_frame"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@android:color/transparent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+
+        app:layout_constraintEnd_toStartOf="@+id/settingsButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@android:color/transparent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/firstTBTTurnType"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/tbt_default"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:ignore="UseAppTint" />
+
+    <TextView
+        android:id="@+id/firstTBTDistDigitText"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:text="0.0"
+
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/firstTBTTurnType"
+        app:layout_constraintHorizontal_bias="0.5
+"
+        app:layout_constraintStart_toStartOf="@+id/firstTBTTurnType"
+        app:layout_constraintTop_toBottomOf="@+id/firstTBTTurnType"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/currentSpeedText"
+        android:layout_width="240dp"
+        android:layout_height="160dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/cyan"
+        android:textSize="120sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/laneImage" />
+
+    <ImageView
+        android:id="@+id/myCarImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/graphic_car_back"
+        app:layout_constraintBottom_toBottomOf="@+id/laneImage"
+        app:layout_constraintEnd_toEndOf="@+id/laneImage"
+        app:layout_constraintStart_toStartOf="@+id/laneImage"
+        tools:ignore="UseAppTint" />
+
+    <ImageView
+        android:id="@+id/previousCarImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/graphic_car_back"
+        android:tint="@color/grey"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/laneImage"
+        app:layout_constraintEnd_toEndOf="@+id/laneImage"
+        app:layout_constraintStart_toStartOf="@+id/laneImage"
+        tools:ignore="UseAppTint" />
+
+    <ImageView
+        android:id="@+id/laneImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/graphic_lane_basic"
+        app:layout_constraintEnd_toEndOf="@+id/currentSpeedText"
+        app:layout_constraintStart_toStartOf="@+id/currentSpeedText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/signRedCircleImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/graphic_sign"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/currentSpeedText"
+        app:layout_constraintEnd_toStartOf="@+id/currentSpeedText"
+        app:layout_constraintTop_toTopOf="@+id/currentSpeedText" />
+
+    <TextView
+        android:id="@+id/signText"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/signRedCircleImage"
+        app:layout_constraintEnd_toEndOf="@+id/signRedCircleImage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/signRedCircleImage"
+        app:layout_constraintTop_toTopOf="@+id/signRedCircleImage"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/noSignalImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/graphic_no_signal"
+        android:tint="@color/red"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/laneImage"
+        app:layout_constraintEnd_toEndOf="@+id/signRedCircleImage"
+        app:layout_constraintEnd_toStartOf="@+id/laneImage"
+        app:layout_constraintTop_toTopOf="@+id/laneImage"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="UseAppTint" />
+
+
+    <ImageView
+        android:id="@+id/progressBarLineImage"
+        android:layout_width="40dp"
+        android:layout_height="160dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/progress_bar_line"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signRedCircleImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseAppTint" />
+
+    <ImageView
+        android:id="@+id/progressBarDotImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/progress_bar_dot"
+        android:visibility="invisible"
+
+        app:layout_constraintBottom_toBottomOf="@+id/progressBarLineImage"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarLineImage"
+        app:layout_constraintHorizontal_bias="0.5
+"
+        app:layout_constraintStart_toStartOf="@+id/progressBarLineImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:tint="@color/green" />
+
+    <TextView
+        android:id="@+id/dstNameText"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:fontFamily=""
+        android:gravity="center"
+        android:maxLines="1"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarLineImage"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarLineImage"
+        app:layout_constraintStart_toStartOf="@+id/progressBarLineImage" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

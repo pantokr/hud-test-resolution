@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">hud-test</string>
+    <string name="road_name">RoadNameTextView</string>
+    <string name="dist_digit">2.3</string>
+    <string name="dist_unit">km</string>
+    <string name="velocity_unit">km/h</string>
+</resources>

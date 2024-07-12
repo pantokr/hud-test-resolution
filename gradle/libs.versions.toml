@@ -1,0 +1,86 @@
+[versions]
+firebaseBom = "33.1.1"
+firebaseFunctions = "21.0.0"
+firebaseMlModelInterpreter = "22.0.4"
+firebaseMlVision = "24.1.0"
+firebaseMlVisionObjectDetectionModel = "19.0.6"
+firebaseMlVisionVersion = "24.0.3"
+glide = "4.11.0"
+compiler = "4.11.0"
+gradle = "8.4.2"
+gson = "2.10.1"
+imageLabelingCustom = "17.0.2"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+linkfirebase = "17.0.0"
+localbroadcastmanager = "1.1.0"
+material = "1.12.0"
+activity = "1.9.0"
+constraintlayout = "2.1.4"
+orgEclipsePahoClientMqttv3Version = "1.2.5"
+pahoMqttAndroidVersion = "3.6.4"
+tensorflowLite = "2.8.0"
+tensorflowLiteGpu = "2.8.0"
+tensorflowLiteSupport = "0.3.1"
+tensorflowLiteTaskVision = "0.4.0"
+tensorflowLiteTaskVisionVersion = "0.0.0-nightly"
+tensorflowLiteVersion = "2.3.0"
+tensorflowTensorflowLiteTaskVision = "0.0.0-nightly-SNAPSHOT"
+tmapEdcSdk = "1.0.0.0045"
+cameraCore = "1.3.4"
+common = "18.10.0"
+playServicesTasks = "18.2.0"
+objectDetectionCommon = "18.0.0"
+objectDetectionCustom = "17.0.1"
+objectDetection = "17.0.1"
+cameraLifecycle = "1.3.4"
+cameraVideo = "1.3.4"
+cameraView = "1.3.4"
+
+[libraries]
+camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCore" }
+camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "cameraCore" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-functions = { module = "com.google.firebase:firebase-functions", version.ref = "firebaseFunctions" }
+firebase-ml-model-interpreter = { module = "com.google.firebase:firebase-ml-model-interpreter" }
+firebase-ml-vision = { module = "com.google.firebase:firebase-ml-vision", version.ref = "firebaseMlVision" }
+firebase-ml-vision-object-detection-model = { module = "com.google.firebase:firebase-ml-vision-object-detection-model", version.ref = "firebaseMlVisionObjectDetectionModel" }
+firebase-ml-vision-v2403 = { module = "com.google.firebase:firebase-ml-vision", version.ref = "firebaseMlVisionVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+google-firebase-ml-model-interpreter = { module = "com.google.firebase:firebase-ml-model-interpreter", version.ref = "firebaseMlModelInterpreter" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+image-labeling-custom = { module = "com.google.mlkit:image-labeling-custom", version.ref = "imageLabelingCustom" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+linkfirebase = { module = "com.google.mlkit:linkfirebase", version.ref = "linkfirebase" }
+localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+org-eclipse-paho-client-mqttv3-v125 = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "orgEclipsePahoClientMqttv3Version" }
+paho-mqtt-android-v364 = { module = "com.github.hannesa2:paho.mqtt.android", version.ref = "pahoMqttAndroidVersion" }
+tensorflow-lite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLite" }
+tensorflow-lite-gpu = { module = "org.tensorflow:tensorflow-lite-gpu", version.ref = "tensorflowLiteGpu" }
+tensorflow-lite-support = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflowLiteSupport" }
+tensorflow-lite-task-vision = { module = "org.tensorflow:tensorflow-lite-task-vision", version.ref = "tensorflowLiteTaskVision" }
+tensorflow-lite-task-vision-v000nightly = { module = "org.tensorflow:tensorflow-lite-task-vision", version.ref = "tensorflowLiteTaskVisionVersion" }
+tensorflow-lite-task-vision-v000nightlysnapshot = { module = "org.tensorflow:tensorflow-lite-task-vision", version.ref = "tensorflowTensorflowLiteTaskVision" }
+tensorflow-lite-v230 = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLiteVersion" }
+tmap-edc-sdk = { module = "com.tmapmobility.tmap:tmap-edc-sdk", version.ref = "tmapEdcSdk" }
+camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
+common = { group = "com.google.mlkit", name = "common", version.ref = "common" }
+play-services-tasks = { group = "com.google.android.gms", name = "play-services-tasks", version.ref = "playServicesTasks" }
+object-detection-common = { group = "com.google.mlkit", name = "object-detection-common", version.ref = "objectDetectionCommon" }
+object-detection-custom = { group = "com.google.mlkit", name = "object-detection-custom", version.ref = "objectDetectionCustom" }
+object-detection = { group = "com.google.mlkit", name = "object-detection", version.ref = "objectDetection" }
+camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
+camera-video = { group = "androidx.camera", name = "camera-video", version.ref = "cameraVideo" }
+camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
+

@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+}
+
+
+android {
+    namespace 'com.ecoss.hud_test_resolution'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.ecoss.hud_test_resolution"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    configurations {
+        implementation.exclude module: 'protobuf-lite'
+    }
+}
+
+dependencies {
+    implementation libs.tmap.edc.sdk
+
+    implementation libs.object.detection.common
+    implementation libs.object.detection.custom
+    implementation libs.object.detection
+
+    implementation libs.org.eclipse.paho.client.mqttv3.v125
+    implementation libs.paho.mqtt.android.v364
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+
+    implementation libs.localbroadcastmanager
+    implementation libs.common
+    implementation libs.play.services.tasks
+
+    implementation libs.glide
+    annotationProcessor libs.compiler
+
+    implementation libs.camera.core
+    implementation libs.camera.lifecycle
+    implementation libs.camera.video
+    implementation libs.camera.view
+    implementation libs.camera.camera2
+    implementation libs.camera.extensions
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
