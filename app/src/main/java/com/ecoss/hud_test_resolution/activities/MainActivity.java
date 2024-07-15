@@ -84,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
         // Camera
         CameraUtils cameraUtils = new CameraUtils(this);
         cameraUtils.initializeCamera();
-
-
     }
 
 
@@ -106,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d(TAG, "initDisplay: Presentation On. Resolution: " + String.format("%d*%d", screenWidth, screenHeight));
         }
-
     }
 
     void setWakeLock() {
@@ -214,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
                     // 라우팅 실행 시
                     if (o.equals(true)) {
                         registCallback();
-
                     }
 
                 } else if (commandState.equals(EDCConst.CommandState.COMMAND_ADDRESS)) {
