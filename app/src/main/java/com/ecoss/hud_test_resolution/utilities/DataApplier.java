@@ -125,14 +125,6 @@ public class DataApplier {
         } else {
 
         }
-//        if (laneCount < 3) {
-//            centerLaneImageView.setVisibility(View.VISIBLE);
-//            sideLaneImageView.setVisibility(View.VISIBLE);
-//
-//        } else {
-//            centerLaneImageView.setVisibility(View.VISIBLE);
-//            sideLaneImageView.setVisibility(View.VISIBLE);
-//        }
     }
 
     public void applyCurrentSpeed(Bundle data) {
