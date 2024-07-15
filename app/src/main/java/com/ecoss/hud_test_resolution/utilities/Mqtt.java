@@ -21,7 +21,7 @@ public class Mqtt {
     private static final String SERVER_URI = "tcp://172.30.1.56:1883";
     private static final String TOPIC_A = "esp32/humidity";
     private static final String TOPIC_B = "esp32/temperature";
-    private static final String TAG = "EDC_TEST";
+    private static final String TAG = "VAR_TEST";
 
     private MqttAndroidClient mqttClient;
 

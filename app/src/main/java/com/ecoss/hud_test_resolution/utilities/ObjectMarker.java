@@ -6,6 +6,7 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -15,6 +16,7 @@ import com.ecoss.hud_test_resolution.R;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ObjectMarker extends View {
     private static final String TAG = "VAR-TEST";
@@ -30,20 +32,12 @@ public class ObjectMarker extends View {
 
     private Activity dstActivity;
     private ConstraintLayout layout;
-    int frameCount = 0;
-
     public ObjectMarker(Activity dstActivity) {
         super(dstActivity);
         this.dstActivity = dstActivity;
-
-        screenWidth = getResources().getDisplayMetrics().widthPixels;
-        screenHeight = getResources().getDisplayMetrics().heightPixels;
     }
 
     public void updateRect(Map<RectF, Integer> boxes) {
-        frameCount++;
-
-
         dstActivity.runOnUiThread(() -> {
 
             layout.removeAllViews();
@@ -65,6 +59,9 @@ public class ObjectMarker extends View {
             Log.e(TAG, "ConstraintLayout not found");
             return;
         }
+
+        screenWidth = getResources().getDisplayMetrics().widthPixels;
+        screenHeight = getResources().getDisplayMetrics().heightPixels;
 
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
@@ -105,6 +102,7 @@ public class ObjectMarker extends View {
     private void draw(RectF rect, Integer cat) {
         if (rect != null) {
             ImageView marker;
+            TextView markerInfo;
             ConstraintSet constraintSet;
 
             constraintSet = new ConstraintSet();
@@ -115,16 +113,27 @@ public class ObjectMarker extends View {
             marker.setImageResource(R.drawable.object_frame);
             marker.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            if (items.get(cat) == "car" || items.get(cat) == "bus" || items.get(cat) == "truck") {
-                marker.setColorFilter(Color.RED);
+            markerInfo = new TextView(dstActivity);
+            markerInfo.setId(View.generateViewId());
+            markerInfo.setText(items.get(cat));
 
-            } else if (items.get(cat) == "person") {
+            markerInfo.setTextSize(16);
+
+            if (Objects.equals(items.get(cat), "car") || Objects.equals(items.get(cat), "bus") || Objects.equals(items.get(cat), "truck")) {
+                marker.setColorFilter(Color.RED);
+                markerInfo.setTextColor(Color.RED);
+            } else if (Objects.equals(items.get(cat), "person")) {
                 marker.setColorFilter(Color.BLUE);
-            } else if (items.get(cat) == "laptop") {
+                markerInfo.setTextColor(Color.BLUE);
+            } else if (Objects.equals(items.get(cat), "laptop")) {
                 marker.setColorFilter(Color.GREEN);
+                markerInfo.setTextColor(Color.GREEN);
+            } else {
+                markerInfo.setTextColor(Color.WHITE);
             }
 
             layout.addView(marker);
+            layout.addView(markerInfo);
 
             // 위치와 크기 변환
             float left = rect.left;
@@ -136,9 +145,16 @@ public class ObjectMarker extends View {
             constraintSet.connect(marker.getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, (int) left);
             constraintSet.connect(marker.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, (int) top);
 
+            constraintSet.connect(markerInfo.getId(), ConstraintSet.BOTTOM, marker.getId(), ConstraintSet.TOP);
+            constraintSet.connect(markerInfo.getId(), ConstraintSet.START, marker.getId(), ConstraintSet.START);
+            constraintSet.connect(markerInfo.getId(), ConstraintSet.END, marker.getId(), ConstraintSet.END);
+
             // 크기 설정
             constraintSet.constrainWidth(marker.getId(), (int) (right - left));
             constraintSet.constrainHeight(marker.getId(), (int) (bottom - top));
+
+            constraintSet.constrainWidth(markerInfo.getId(), (int) (right - left));
+            constraintSet.constrainHeight(markerInfo.getId(), (64));
 
             constraintSet.applyTo(layout);
         }

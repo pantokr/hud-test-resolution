@@ -1,7 +1,7 @@
 package com.ecoss.hud_test_resolution.utilities;
 public class LambertConverter {
 
-    private final String TAG = "EDC_TEST";
+    private final String TAG = "VAR_TEST";
 
     private static final int NX = 149; /* X축 격자점 수 */
     private static final int NY = 253; /* Y축 격자점 수 */

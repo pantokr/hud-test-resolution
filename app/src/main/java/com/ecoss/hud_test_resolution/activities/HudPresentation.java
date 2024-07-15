@@ -34,8 +34,6 @@ public class HudPresentation extends Presentation {
 
     public HudPresentation(Context outerContext, Display display) {
         super(outerContext, display); // 테마 적용
-
-
     }
 
     @Override

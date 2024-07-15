@@ -49,7 +49,6 @@ public class CameraUtils {
         this.dstActivity = dstActivity;
 
         analyzerUtils = new AnalyzerUtils(dstActivity);
-        // cloudVision = new CloudVision();
 
         if (dstActivity instanceof MainActivity) {
             viewBinding = ActivityMainBinding.inflate(dstActivity.getLayoutInflater());
