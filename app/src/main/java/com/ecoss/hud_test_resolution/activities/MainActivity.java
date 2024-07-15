@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             int screenWidth = hudPresentation.getResources().getDisplayMetrics().widthPixels;
             int screenHeight = hudPresentation.getResources().getDisplayMetrics().heightPixels;
 
-            Log.d(TAG, "initDisplay: Presentation On. Resolution: " + String.format("%d*%d", screenWidth, screenHeight));
+            Log.d(TAG, "initDisplay: Presentation On. Resolution: " + String.format("(%d * %d)", screenWidth, screenHeight));
         }
     }
 

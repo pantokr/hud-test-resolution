@@ -39,9 +39,7 @@ public class ObjectMarker extends View {
 
     public void updateRect(Map<RectF, Integer> boxes) {
         dstActivity.runOnUiThread(() -> {
-
             layout.removeAllViews();
-
 
             for (RectF key : boxes.keySet()
             ) {
@@ -59,7 +57,6 @@ public class ObjectMarker extends View {
             Log.e(TAG, "ConstraintLayout not found");
             return;
         }
-
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
 

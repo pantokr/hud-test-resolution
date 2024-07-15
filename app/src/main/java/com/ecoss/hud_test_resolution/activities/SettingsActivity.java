@@ -13,7 +13,7 @@ import com.ecoss.hud_test_resolution.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private final String TAG = "EDC_TEST";
+    private final String TAG = "VAR_TEST";
 
     EditText tempCurrentSpeedEditText;
     EditText tempLimitSpeedEditText;

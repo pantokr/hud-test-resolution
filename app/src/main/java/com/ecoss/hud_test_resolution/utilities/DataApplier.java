@@ -229,7 +229,7 @@ public class DataApplier {
 
         if (activity instanceof Activity) {
             firstTBTTurnTypeImageView = ((Activity) activity).findViewById(R.id.firstTBTTurnType);
-            } else {
+        } else {
             firstTBTTurnTypeImageView = ((HudPresentation) activity).findViewById(R.id.firstTBTTurnType);
 
         }
@@ -495,9 +495,9 @@ public class DataApplier {
 
         TextView firstTBTDistDigitTextView;
         if (activity instanceof Activity) {
-            firstTBTDistDigitTextView= ((Activity) activity).findViewById(R.id.firstTBTDistDigitText);
-            } else {
-            firstTBTDistDigitTextView= ((HudPresentation) activity).findViewById(R.id.firstTBTDistDigitText);
+            firstTBTDistDigitTextView = ((Activity) activity).findViewById(R.id.firstTBTDistDigitText);
+        } else {
+            firstTBTDistDigitTextView = ((HudPresentation) activity).findViewById(R.id.firstTBTDistDigitText);
 
         }
         firstTBTDistDigitTextView.setVisibility(View.VISIBLE);
