@@ -8,22 +8,30 @@
     android:background="@color/black"
     tools:context=".activities.MainActivity">
 
-
-    <!--    <com.ecoss.hud.test.utilities.ObjectRect-->
-    <!--        android:id="@+id/objectRect"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:background="@android:color/transparent" />-->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/markerContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/noSignalImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/graphic_no_signal"
+        android:tint="@color/red"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/laneImage"
+        app:layout_constraintTop_toTopOf="@+id/laneImage"
+        tools:ignore="UseAppTint" />
     <ImageButton
         android:id="@+id/cameraButton"
         android:layout_width="60dp"
@@ -48,16 +56,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/firstTBTTurnType"
+        android:id="@+id/firstTBTImage"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginEnd="60dp"
         android:src="@drawable/tbt_default"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/laneImage"
+        app:layout_constraintEnd_toEndOf="@+id/laneImage"
+        app:layout_constraintStart_toStartOf="@+id/laneImage"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="UseAppTint" />
 
     <TextView
@@ -65,18 +73,13 @@
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:gravity="center"
-        android:text="0.0"
+        android:text=""
 
         android:textColor="@color/white"
         android:textSize="60sp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/firstTBTTurnType"
-        app:layout_constraintHorizontal_bias="0.5
-"
-        app:layout_constraintStart_toStartOf="@+id/firstTBTTurnType"
-        app:layout_constraintTop_toBottomOf="@+id/firstTBTTurnType"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/laneImage"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/currentSpeedText"
@@ -121,12 +124,11 @@
         android:id="@+id/laneImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="8dp"
         android:src="@drawable/graphic_lane_basic"
         app:layout_constraintEnd_toEndOf="@+id/currentSpeedText"
         app:layout_constraintStart_toStartOf="@+id/currentSpeedText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        />
 
     <ImageView
         android:id="@+id/signRedCircleImage"
@@ -154,20 +156,6 @@
         app:layout_constraintStart_toStartOf="@+id/signRedCircleImage"
         app:layout_constraintTop_toTopOf="@+id/signRedCircleImage"
         app:layout_constraintVertical_bias="0.5" />
-
-    <ImageView
-        android:id="@+id/noSignalImage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/graphic_no_signal"
-        android:tint="@color/red"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/laneImage"
-        app:layout_constraintEnd_toEndOf="@+id/signRedCircleImage"
-        app:layout_constraintEnd_toStartOf="@+id/laneImage"
-        app:layout_constraintTop_toTopOf="@+id/laneImage"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="UseAppTint" />
 
 
     <ImageView

@@ -16,4 +16,10 @@ public class CameraActivity extends AppCompatActivity {
         CameraUtils cameraUtils = new CameraUtils(this);
         cameraUtils.initializeCamera();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 }

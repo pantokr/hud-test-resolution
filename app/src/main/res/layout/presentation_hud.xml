@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".activities.HudPresentation">
+        tools:context=".activities.HudPresentation">
 
 
     <ImageView
@@ -20,7 +20,7 @@
 
 
     <ImageView
-        android:id="@+id/firstTBTTurnType"
+        android:id="@+id/firstTBTImage"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:src="@drawable/tbt_default"
@@ -41,10 +41,10 @@
         android:textColor="@color/white"
         android:textSize="100sp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/firstTBTTurnType"
+        app:layout_constraintEnd_toEndOf="@+id/firstTBTImage"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/firstTBTTurnType"
-        app:layout_constraintTop_toBottomOf="@+id/firstTBTTurnType" />
+        app:layout_constraintStart_toStartOf="@+id/firstTBTImage"
+        app:layout_constraintTop_toBottomOf="@+id/firstTBTImage" />
 
     <TextView
         android:id="@+id/currentSpeedText"
@@ -130,8 +130,7 @@
         android:tint="@color/red"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/laneImage"
-        app:layout_constraintEnd_toEndOf="@+id/signRedCircleImage"
-        app:layout_constraintEnd_toStartOf="@+id/laneImage"
+        app:layout_constraintStart_toStartOf="@+id/laneImage"
         app:layout_constraintTop_toTopOf="@+id/laneImage"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="UseAppTint" />
@@ -146,9 +145,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/signRedCircleImage"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="UseAppTint" />
 
     <ImageView
@@ -160,8 +160,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/progressBarLineImage"
         app:layout_constraintEnd_toEndOf="@+id/progressBarLineImage"
-        app:layout_constraintHorizontal_bias="0.5
-"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/progressBarLineImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -169,7 +168,7 @@
 
     <TextView
         android:id="@+id/dstNameText"
-        android:layout_width="480dp"
+        android:layout_width="400dp"
         android:layout_height="120dp"
         android:ellipsize="middle"
         android:fontFamily=""
@@ -178,7 +177,6 @@
         android:text=""
         android:textColor="@color/white"
         android:textSize="60sp"
-        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/progressBarLineImage"
         app:layout_constraintEnd_toEndOf="@+id/progressBarLineImage"
         app:layout_constraintStart_toStartOf="@+id/progressBarLineImage" />

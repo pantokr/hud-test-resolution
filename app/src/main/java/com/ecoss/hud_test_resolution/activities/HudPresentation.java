@@ -41,13 +41,13 @@ public class HudPresentation extends Presentation {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.presentation_hud);
 
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-            );
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        );
 
         tmap = new Tmap();
         weather = new Weather();
@@ -55,20 +55,20 @@ public class HudPresentation extends Presentation {
         mqtt = new Mqtt(this.getContext());
 
         // Second Screen
-        dataApplier = new DataApplier(this, tmap, weather, stock, mqtt);
+        dataApplier = new DataApplier(this.getContext(), tmap, weather, stock, mqtt);
         initView();
 
         runnable = () -> {
             Bundle data = Global.RoutingInitializer.data;
             if (data != null) {
-                dataApplier.applyDstName(data);
-                dataApplier.applyProgressBar(data);
-                dataApplier.applyCurrentLane(data);
-                dataApplier.applyCurrentSpeed(data);
-                dataApplier.applyLimitSpeedSign(data);
-                dataApplier.applySignal(data);
-                dataApplier.applyFirstTBTTurnType(data);
-                dataApplier.applyFirstTBTDist(data);
+                dataApplier.applyDstName(data, findViewById(R.id.dstNameText));
+                dataApplier.applyProgressBar(data, findViewById(R.id.constraintLayout), findViewById(R.id.progressBarLineImage), findViewById(R.id.progressBarDotImage));
+                dataApplier.applyCurrentLane(data, findViewById(R.id.laneImage));
+                dataApplier.applyCurrentSpeed(data, findViewById(R.id.currentSpeedText));
+                dataApplier.applyLimitSpeedSign(data, findViewById(R.id.signRedCircleImage), findViewById(R.id.signText));
+                dataApplier.applySignal(data, findViewById(R.id.noSignalImage));
+                dataApplier.applyFirstTBTTurnType(data, findViewById(R.id.firstTBTImage));
+                dataApplier.applyFirstTBTDist(data, findViewById(R.id.firstTBTDistDigitText));
             }
             handler.postDelayed(runnable, interval);
         };
@@ -78,9 +78,6 @@ public class HudPresentation extends Presentation {
 
     void initView() {
         constraintLayout = findViewById(R.id.constraintLayout);
-        if (REVERSE_X) {
-            constraintLayout.setScaleX(-1);
-        }
     }
 
     @Override

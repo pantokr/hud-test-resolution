@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.YuvImage;
 import android.media.Image;
+import android.util.Log;
 
 import androidx.annotation.OptIn;
 import androidx.camera.core.ExperimentalGetImage;
@@ -61,7 +62,6 @@ public class AnalyzerUtils {
         if (objectMarker != null) {
             objectMarker.setImageSourceInfo(mediaImage.getWidth(), mediaImage.getHeight()); // or true if using front camera
         }
-
         Bitmap bitmap = imageProxyToBitmap(image);
         TensorImage inputImageBuffer = preprocess(bitmap);
 
@@ -89,6 +89,8 @@ public class AnalyzerUtils {
         int imageWidth = bitmap.getWidth();
         int imageHeight = bitmap.getHeight();
 
+        Log.d(TAG, "analyze: "+imageWidth + imageHeight);
+
         tflite.runForMultipleInputsOutputs(new Object[]{inputImageBuffer.getBuffer()}, outputMap);
 
         Map<RectF, Integer> boxes = new HashMap<RectF, Integer>();
@@ -96,17 +98,11 @@ public class AnalyzerUtils {
         for (int i = 0; i < detectionsCount; i++) {
             if (outputScores[0][i] >= CONFIDENCE_THRESHOLD) {
                 RectF boundingBox = new RectF(
-                        outputLocations[0][i][1] * INPUT_SIZE,
-                        outputLocations[0][i][0] * INPUT_SIZE,
-                        outputLocations[0][i][3] * INPUT_SIZE,
-                        outputLocations[0][i][2] * INPUT_SIZE
+                        outputLocations[0][i][1] * imageWidth,
+                        outputLocations[0][i][0] * imageHeight,
+                        outputLocations[0][i][3] * imageWidth,
+                        outputLocations[0][i][2] * imageHeight
                 );
-
-                // 원래 이미지 크기로 복구
-                boundingBox.left = boundingBox.left * imageWidth / INPUT_SIZE;
-                boundingBox.top = boundingBox.top * imageHeight / INPUT_SIZE;
-                boundingBox.right = boundingBox.right * imageWidth / INPUT_SIZE;
-                boundingBox.bottom = boundingBox.bottom * imageHeight / INPUT_SIZE;
 
                 int detectedClass = (int) outputClasses[0][i];
                 boxes.put(boundingBox, detectedClass);

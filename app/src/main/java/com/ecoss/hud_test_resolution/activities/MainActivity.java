@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     // 발급 받은 API KEY
     // private String API_KEY = "x8XUvUUZPn2m2jun6cnH18EeZeAONkR56DvjJCKs"; //발급 받은 API KEY
-    private String API_KEY = "vaZMsSpVca3X4MGwQ5pIp6BDEzozDlVk3nnvW0uk"; //발급 받은 API KEY
+    // private String API_KEY = "vaZMsSpVca3X4MGwQ5pIp6BDEzozDlVk3nnvW0uk"; //발급 받은 API KEY
     // private String API_KEY = "EbXk0CTANo3YyQTYQHa8r1RLhZSxeVZ4aSLC1do7"; //발급 받은 API KEY
-    // private String API_KEY = "MJh1Paaubi9XD3fnv4r6P9M0HW3z6deF2NmJEtIK"; //발급 받은 API KEY
+    private String API_KEY = "MJh1Paaubi9XD3fnv4r6P9M0HW3z6deF2NmJEtIK"; //발급 받은 API KEY
     // private String API_KEY = "U3aHS2DOHaL6Lu3BtRkD3gA5cfFDbSX4EMIKmh5f"; //발급 받은 API KEY
     private final String USER_KEY = "";
     private final String DEVICE_KEY = "";
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             int tollFree = bundle.getInt("tollFee");
 
             String log = "거리 " + totalDistanceInMeter + "m / 시간 " + totalTimeInSec + "초 / 요금 " + tollFree + "원";
-            Log.e("EDC_TEST", log);
+            Log.e("VAR_TEST", log);
         }
 
         @Override
@@ -159,12 +159,12 @@ public class MainActivity extends AppCompatActivity {
             int driveTimeInSec = bundle.getInt("driveTimeInSec");
 
             String log = "주행 거리 " + driveDistanceInMeter + "m / 주행 시간 " + driveTimeInSec + "초";
-            Log.e("EDC_TEST", log);
+            Log.e("VAR_TEST", log);
         }
 
         @Override
         public void onInitSuccessEDC() {
-            Log.e("EDC_TEST", "onInitSuccessEDC");
+            Log.e("VAR_TEST", "onInitSuccessEDC");
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -176,17 +176,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFinishedEDC() {
             Log.d(TAG, "mainActivity Finished.");
-            Log.e("EDC_TEST", "onFinishedEDC");
+            Log.e("VAR_TEST", "onFinishedEDC");
         }
 
         @Override
         public void onHostAppStarted() {
-            Log.e("EDC_TEST", "onHostAppStarted");
+            Log.e("VAR_TEST", "onHostAppStarted");
         }
 
         @Override
         public void onResult(@NonNull EDCConst.CommandState commandState, @NonNull Object o) {
-            Log.e("EDC_TEST", "onResult / " + commandState.getValue() + " / " + commandState + " / " + o);
+            Log.e("VAR_TEST", "onResult / " + commandState.getValue() + " / " + commandState + " / " + o);
 
             if (commandState.equals(EDCConst.CommandState.COMMAND_GET_INFO)) {
                 Bundle data = (Bundle) o;
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFail(@NonNull EDCConst.CommandState commandState, int i,
                            @Nullable String s) {
-            Log.e("EDC_TEST", "onFail / " + commandState.getValue() + " " + commandState.name() + " / " + i + " / " + s);
+            Log.e("VAR_TEST", "onFail / " + commandState.getValue() + " " + commandState.name() + " / " + i + " / " + s);
 
             if (commandState.equals(EDCConst.GetTmapStatus.IS_TMAP_ROUTE)) {
                 new Handler().postDelayed(new Runnable() {
@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 if (Global.RoutingInitializer.timer == 0) {
                     Global.RoutingInitializer.initialDist = tmap.getRemainDist(data);
                     // Dst Name
-                    dataApplier.applyDstName(data);
+                    dataApplier.applyDstName(data, findViewById(R.id.dstNameText));
                     // Weather
                     dataApplier.applyWeather(data);
                     // Stock
@@ -274,18 +274,18 @@ public class MainActivity extends AppCompatActivity {
                     dataApplier.applyMqtt();
                 }
                 // progress bar의 점 위치를 변경
-                dataApplier.applyProgressBar(data);
+                dataApplier.applyProgressBar(data, findViewById(R.id.constraintLayout), findViewById(R.id.progressBarLineImage), findViewById(R.id.progressBarDotImage));
                 // Graphic에 띄워지는 Lane 수 조정
-                dataApplier.applyCurrentLane(data);
+                dataApplier.applyCurrentLane(data, findViewById(R.id.laneImage));
                 // 과속 시 글자 색이 붉어졌다 돌아오는 Animation 적용
-                dataApplier.applyCurrentSpeed(data);
+                dataApplier.applyCurrentSpeed(data, findViewById(R.id.currentSpeedText));
                 // 제한 속도 표지판 출력
-                dataApplier.applyLimitSpeedSign(data);
+                dataApplier.applyLimitSpeedSign(data, findViewById(R.id.signRedCircleImage), findViewById(R.id.signText));
                 // 신호 수신 여부 표시
-                dataApplier.applySignal(data);
+                dataApplier.applySignal(data, findViewById(R.id.noSignalImage));
                 // TBT
-                dataApplier.applyFirstTBTTurnType(data);
-                dataApplier.applyFirstTBTDist(data);
+                dataApplier.applyFirstTBTTurnType(data, findViewById(R.id.firstTBTImage));
+                dataApplier.applyFirstTBTDist(data, findViewById(R.id.firstTBTDistDigitText));
 
 
                 Global.RoutingInitializer.timer++;
@@ -335,6 +335,6 @@ public class MainActivity extends AppCompatActivity {
         if (wakeLock != null && wakeLock.isHeld()) {
             wakeLock.release();
         }
+        finish();
     }
-
 }
