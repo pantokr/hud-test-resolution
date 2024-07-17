@@ -47,9 +47,7 @@ public class DataApplier {
     }
 
     public void applyDstName(Bundle data, TextView dstNameText) {
-
         String dstName = tmapData.getDstName(data);
-
         dstNameText.setText(dstName);
     }
 
@@ -58,8 +56,6 @@ public class DataApplier {
         int initialDist = Global.RoutingInitializer.initialDist;
         float rpi = ((float) remainDist / initialDist);
 
-        lineImageView.setVisibility(View.VISIBLE);
-        dotImageView.setVisibility(View.VISIBLE);
 
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(layout);
@@ -69,20 +65,13 @@ public class DataApplier {
     }
 
     public void applyCurrentLane(Bundle data, ImageView centerLaneImageView) {
-
-        centerLaneImageView.setVisibility(View.VISIBLE);
-
         // 속도에 따라 그래픽 변환
-
         int currentSpeed = tmapData.getCurrentSpeed(data);
         int currentLaneCount = tmapData.getLaneCount(data);
 
         if (currentSpeed < 10) {
-            if (currentLaneCount < 3) {
-                centerLaneImageView.setImageResource(R.drawable.graphic_lane_basic);
-            } else {
+            centerLaneImageView.setImageResource(R.drawable.graphic_lane_basic);
 
-            }
         } else if (currentSpeed < 50) {
             Glide.with(context)
                     .load(R.drawable.graphic_lane_1000ms)
@@ -97,7 +86,6 @@ public class DataApplier {
     }
 
     public void applyCurrentSpeed(Bundle data, TextView currentSpeedText) {
-
         int currentSpeed = tmapData.getCurrentSpeed(data);
         int limitSpeed = tmapData.getCurrentLimitSpeed(data);
 
@@ -109,7 +97,6 @@ public class DataApplier {
     }
 
     public void fadeOverSpeed(TextView currentSpeedTextView) {
-
         int cyan = ContextCompat.getColor(context, R.color.cyan);
         int red = ContextCompat.getColor(context, R.color.red);
         ValueAnimator colorAnimationToRed = ValueAnimator.ofObject(new ArgbEvaluator(), cyan, red);
@@ -134,7 +121,6 @@ public class DataApplier {
     }
 
     public void applyLimitSpeedSign(Bundle data, ImageView signRedCircleImageView, TextView signTextView) {
-
         int limitSpeed = tmapData.getCurrentLimitSpeed(data);
 
         if (limitSpeed != 0) {
@@ -159,18 +145,10 @@ public class DataApplier {
     }
 
     public void applyFirstTBTTurnType(Bundle data, ImageView firstTBTImageView) {
-
-        Bitmap cr_bitmap = tmapData.getCrossRoadImage(data);
         HashMap<String, Object> firstTBTInfo = tmapData.getFirstTBTInfo(data);
         int turnType = tmapData.getTBTTurnType(firstTBTInfo);
 
-        firstTBTImageView.setVisibility(View.VISIBLE);
-
-        if (cr_bitmap != null) {
-            firstTBTImageView.setImageBitmap(cr_bitmap);
-        }
-        // 안내 없음
-        else if (turnType == 3 || turnType == 4 || turnType == 5 || turnType == 6 || turnType == 7) {
+        if (turnType == 3 || turnType == 4 || turnType == 5 || turnType == 6 || turnType == 7) {
             firstTBTImageView.setImageResource(0);
         }
         // 직진
@@ -417,11 +395,11 @@ public class DataApplier {
         }
         // 지하도로 진입
         else if (turnType == 119) {
-            firstTBTImageView.setImageResource(R.drawable.tbt_under);
+            firstTBTImageView.setImageResource(R.drawable.tbt_tunnel);
         }
         // 고가도로 진입
         else if (turnType == 120) {
-            firstTBTImageView.setImageResource(R.drawable.tbt_high);
+            firstTBTImageView.setImageResource(R.drawable.tbt_overpass);
         }
         // 터널
         else if (turnType == 121) {
@@ -429,12 +407,11 @@ public class DataApplier {
         }
         // 지하도로 옆
         else if (turnType == 123) {
-            firstTBTImageView.setImageResource(R.drawable.tbt_under);
+            firstTBTImageView.setImageResource(R.drawable.tbt_tunnel);
         }
         // 고가도로 옆
         else if (turnType == 124) {
-
-            firstTBTImageView.setImageResource(R.drawable.tbt_high);
+            firstTBTImageView.setImageResource(R.drawable.tbt_overpass);
         }
         // 로터리 1시 방향, 로터리 2시 방향
         else if (turnType == 131 || turnType == 132) {
@@ -514,13 +491,22 @@ public class DataApplier {
         }
     }
 
+    public void applyCrossRoadBitmap(Bundle data, ImageView crossRoadImageView) {
+        Bitmap crBitmap = tmapData.getCrossRoadImage(data);
+
+        if (crBitmap != null) {
+            crossRoadImageView.setVisibility(View.VISIBLE);
+            crossRoadImageView.setImageBitmap(crBitmap);
+        } else {
+            crossRoadImageView.setVisibility(View.INVISIBLE);
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     public void applyFirstTBTDist(Bundle data, TextView firstTBTDistDigitTextView) {
 
         HashMap<String, Object> firstTBTInfo = tmapData.getFirstTBTInfo(data);
         int distance = tmapData.getTBTDistance(firstTBTInfo);
-
-        firstTBTDistDigitTextView.setVisibility(View.VISIBLE);
 
         StringBuilder distDigit = new StringBuilder();
         String distUnitText;

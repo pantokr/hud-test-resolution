@@ -28,7 +28,7 @@ import com.tmapmobility.tmap.tmapsdk.edc.TmapEDCSDK;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = "AR-HUD";
+    private final String TAG = "VAR-TEST";
     private PowerManager.WakeLock wakeLock;
     private DisplayManager displayManager;
     private Display[] displays;
@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     // 발급 받은 API KEY
     // private String API_KEY = "x8XUvUUZPn2m2jun6cnH18EeZeAONkR56DvjJCKs"; //발급 받은 API KEY
-    // private String API_KEY = "vaZMsSpVca3X4MGwQ5pIp6BDEzozDlVk3nnvW0uk"; //발급 받은 API KEY
+    private String API_KEY = "vaZMsSpVca3X4MGwQ5pIp6BDEzozDlVk3nnvW0uk"; //발급 받은 API KEY
     // private String API_KEY = "EbXk0CTANo3YyQTYQHa8r1RLhZSxeVZ4aSLC1do7"; //발급 받은 API KEY
-    private String API_KEY = "MJh1Paaubi9XD3fnv4r6P9M0HW3z6deF2NmJEtIK"; //발급 받은 API KEY
+    // private String API_KEY = "MJh1Paaubi9XD3fnv4r6P9M0HW3z6deF2NmJEtIK"; //발급 받은 API KEY
     // private String API_KEY = "U3aHS2DOHaL6Lu3BtRkD3gA5cfFDbSX4EMIKmh5f"; //발급 받은 API KEY
     private final String USER_KEY = "";
     private final String DEVICE_KEY = "";
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
                 // TBT
                 dataApplier.applyFirstTBTTurnType(data, findViewById(R.id.firstTBTImage));
                 dataApplier.applyFirstTBTDist(data, findViewById(R.id.firstTBTDistDigitText));
-
+                dataApplier.applyCrossRoadBitmap(data, findViewById(R.id.crossRoadImage));
 
                 Global.RoutingInitializer.timer++;
             }

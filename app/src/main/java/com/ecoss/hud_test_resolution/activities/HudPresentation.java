@@ -18,9 +18,6 @@ import com.ecoss.hud_test_resolution.utilities.Tmap;
 import com.ecoss.hud_test_resolution.utilities.Weather;
 
 public class HudPresentation extends Presentation {
-    private final boolean REVERSE_X = false;
-
-    private ConstraintLayout constraintLayout;
 
     private Tmap tmap;
     private Weather weather;
@@ -56,7 +53,6 @@ public class HudPresentation extends Presentation {
 
         // Second Screen
         dataApplier = new DataApplier(this.getContext(), tmap, weather, stock, mqtt);
-        initView();
 
         runnable = () -> {
             Bundle data = Global.RoutingInitializer.data;
@@ -74,10 +70,6 @@ public class HudPresentation extends Presentation {
         };
 
         handler.postDelayed(runnable, interval);
-    }
-
-    void initView() {
-        constraintLayout = findViewById(R.id.constraintLayout);
     }
 
     @Override

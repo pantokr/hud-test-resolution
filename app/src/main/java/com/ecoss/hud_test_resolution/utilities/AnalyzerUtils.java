@@ -25,10 +25,9 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class AnalyzerUtils {
     private static final String TAG = "VAR-TEST";
@@ -60,8 +59,9 @@ public class AnalyzerUtils {
         Image mediaImage = image.getImage();
 
         if (objectMarker != null) {
-            objectMarker.setImageSourceInfo(mediaImage.getWidth(), mediaImage.getHeight()); // or true if using front camera
+            objectMarker.setImageSourceInfo(Objects.requireNonNull(mediaImage).getWidth(), mediaImage.getHeight()); // or true if using front camera
         }
+
         Bitmap bitmap = imageProxyToBitmap(image);
         TensorImage inputImageBuffer = preprocess(bitmap);
 
@@ -88,8 +88,6 @@ public class AnalyzerUtils {
         // 원본 이미지 크기
         int imageWidth = bitmap.getWidth();
         int imageHeight = bitmap.getHeight();
-
-        Log.d(TAG, "analyze: "+imageWidth + imageHeight);
 
         tflite.runForMultipleInputsOutputs(new Object[]{inputImageBuffer.getBuffer()}, outputMap);
 

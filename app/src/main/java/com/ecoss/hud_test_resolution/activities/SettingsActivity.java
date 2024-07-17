@@ -110,24 +110,4 @@ public class SettingsActivity extends AppCompatActivity {
         String[] mdl = Global.ExternalData.mqttData;
         mqttTextView.setText( String.format("%s %s", mdl[0], mdl[1]));
     }
-
-
-//    void initViewModel() {
-//        globalViewModel = new ViewModelProvider(this).get(GlobalViewModel.class);
-//
-//        globalViewModel.getMqttData().observe(this, new Observer<String[]>() {
-//            @Override
-//            public void onChanged(String[] mqttData) {
-//                if (mqttData != null && mqttData.length > 0) {
-//                    mqttTextView.setText(String.format("%s %s", mqttData[0], mqttData[1])); // 예시로 첫 번째 데이터를 표시
-//                } else {
-//                    mqttTextView.setText("No Mqtt Data");
-//                }
-//            }
-//        });
-//
-//        // 예제: 새로운 데이터 설정
-//        // globalViewModel.setMqttData(new String[]{"Example data"});
-//
-//    }
 }
