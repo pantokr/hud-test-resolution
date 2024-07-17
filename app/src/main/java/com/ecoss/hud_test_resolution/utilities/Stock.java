@@ -60,7 +60,8 @@ public class Stock {
 
         String[] stockArray = new String[4];
         String nm = "", nv = "", cv = "", cr = "";
-        /////////////////json에서 데이터를 파싱//////////////////
+
+        // json에서 데이터를 파싱
 
         JSONObject jsonObj_1 = new JSONObject(toJson);
         String result1 = jsonObj_1.getString("result");

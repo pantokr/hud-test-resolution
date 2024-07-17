@@ -36,8 +36,8 @@ public class Weather {
 
         String date = getDate();
         String time = "0200";
-        // end point 주소값
 
+        // end point 주소값
         StringBuilder urlBuilder = new StringBuilder(apiUrl);
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + serviceKey); // 서비스 키
         urlBuilder.append("&" + URLEncoder.encode("nx", "UTF-8") + "=" + URLEncoder.encode(nx, "UTF-8")); // x좌표

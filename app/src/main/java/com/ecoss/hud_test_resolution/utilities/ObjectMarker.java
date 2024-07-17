@@ -122,11 +122,10 @@ public class ObjectMarker extends View {
             } else if (Objects.equals(items.get(cat), "person")) {
                 marker.setColorFilter(Color.BLUE);
                 markerInfo.setTextColor(Color.BLUE);
-            } else if (Objects.equals(items.get(cat), "laptop")) {
-                marker.setColorFilter(Color.GREEN);
-                markerInfo.setTextColor(Color.GREEN);
             } else {
-                markerInfo.setTextColor(Color.WHITE);
+//                marker.setColorFilter(Color.WHITE);
+//                markerInfo.setTextColor(Color.WHITE);
+                marker.setImageResource(0);
             }
 
             layout.addView(marker);
