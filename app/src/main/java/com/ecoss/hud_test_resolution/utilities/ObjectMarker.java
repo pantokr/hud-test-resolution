@@ -32,6 +32,7 @@ public class ObjectMarker extends View {
 
     private Activity dstActivity;
     private ConstraintLayout layout;
+
     public ObjectMarker(Activity dstActivity) {
         super(dstActivity);
         this.dstActivity = dstActivity;
@@ -119,13 +120,9 @@ public class ObjectMarker extends View {
             if (Objects.equals(items.get(cat), "car") || Objects.equals(items.get(cat), "bus") || Objects.equals(items.get(cat), "truck")) {
                 marker.setColorFilter(Color.RED);
                 markerInfo.setTextColor(Color.RED);
-            } else if (Objects.equals(items.get(cat), "person")) {
-                marker.setColorFilter(Color.BLUE);
-                markerInfo.setTextColor(Color.BLUE);
             } else {
-//                marker.setColorFilter(Color.WHITE);
-//                markerInfo.setTextColor(Color.WHITE);
-                marker.setImageResource(0);
+                marker.setColorFilter(Color.WHITE);
+                markerInfo.setTextColor(Color.WHITE);
             }
 
             layout.addView(marker);
